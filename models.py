@@ -68,6 +68,9 @@ class Perceptron:
         if self.bias is not None:
             self.bias = self.bias + self.eta * self.delta
 
+    def __call__(self, input_vector: np.ndarray) -> float:
+        return self.activation_value(input_vector)[0][0]
+
 
 class Multilayer:
     def __init__(
@@ -188,3 +191,12 @@ def online_multilayer(
         for ob in training_data:
             model.feed_forward(ob.features, ob.values)
             model.backwards()
+
+
+def online_perceptron(
+    model: Perceptron, training_data: list[Observation], cycles: int
+) -> None:
+    for _ in range(cycles):
+        for ob in training_data:
+            model.feed_forward(ob.features)
+            model.back_prop(model.compute_error(ob.values))
