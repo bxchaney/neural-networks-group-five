@@ -130,11 +130,11 @@ def init_multilayer_model(
             # hidden layer weights
             # height equal to number of inputs
             # width equal to number of hidden nodes
-            [[random.random() for _ in range(hidden_nodes)] for _ in range(input_size)],
+            [[random.uniform(-1, 1) for _ in range(hidden_nodes)] for _ in range(input_size)],
             # output layer weights
             # height equal to number of hidden nodes
             # width equal to number of output nodes (1)
-            [[random.random()] for _ in range(hidden_nodes)],
+            [[random.uniform(-1, 1)] for _ in range(hidden_nodes)],
         ]
 
     if default_biases is not None:
@@ -144,11 +144,11 @@ def init_multilayer_model(
             # hidden layer biases
             # height is 1
             # width equal to number of hidden nodes
-            [[random.random() for _ in range(hidden_nodes)]],
+            [[random.uniform(-1, 1) for _ in range(hidden_nodes)]],
             # output layer bias
             # height is 1
             # width equal to number of output nodes (1)
-            [[random.random()]],
+            [[random.uniform(-1, 1)]],
         ]
     else:
         biases = [None, None]
@@ -166,12 +166,12 @@ def init_perceptron_model(
     if default_weights is not None:
         weights = default_weights
     else:
-        weights = [[random.random()] for _ in range(input_size)]
+        weights = [[random.uniform(-1, 1)] for _ in range(input_size)]
 
     if default_biases is not None:
         bias = default_biases
     elif include_bias:
-        bias = [[random.random()]]
+        bias = [[random.uniform(-1, 1)]]
     else:
         bias = None
 
