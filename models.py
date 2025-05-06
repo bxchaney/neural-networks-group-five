@@ -130,7 +130,10 @@ def init_multilayer_model(
             # hidden layer weights
             # height equal to number of inputs
             # width equal to number of hidden nodes
-            [[random.uniform(-1, 1) for _ in range(hidden_nodes)] for _ in range(input_size)],
+            [
+                [random.uniform(-1, 1) for _ in range(hidden_nodes)]
+                for _ in range(input_size)
+            ],
             # output layer weights
             # height equal to number of hidden nodes
             # width equal to number of output nodes (1)
