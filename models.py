@@ -204,6 +204,9 @@ def online_perceptron(
             model.feed_forward(ob.features)
             model.back_prop(model.compute_error(ob.values))
 
-def predict_with_threshold(model, input_vector: np.ndarray, threshold: float = .5) -> int:
+
+def predict_with_threshold(
+    model, input_vector: np.ndarray, threshold: float = 0.5
+) -> int:
     output = model(input_vector)
     return int(output >= threshold)
